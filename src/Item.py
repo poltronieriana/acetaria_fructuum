@@ -17,12 +17,27 @@ class Item:
         # 1 e 5 para size em consideração ao tamanho do inventario
         self.size = random.randint(1, 5)
 
-        # poder do amuleto calculado com base nos atributos (multiplicadores provisorios)
-        self.power = (self.life * 1.25) + (self.strength * 1.5) + (self.speed * 1.35) + (self.resistance * 1.2)
+        # poder do amuleto que vai ser calculado com base nos atributos em um metodo separado
+        self.power = 0
 
         #informações visuais para a representação do item pela interface
         self.sides = random.choice(["||", "//", "--", "\\"])
         self.simbol = random.choice(["🧠", "💎", "🎯", "🐉", "💣", "🔮", "🧪", "🧬", "🔥", "❄️", "⚡"])
+    
+    def calculate_power(self, type) -> float:
+        """
+        Calcula o poder do item com base em seus atributos e a classe escolhida pelo jogador.
+        """
+        if type == "warrior":
+            self.power = (self.life * 1.5) + (self.strength * 1.75) + (self.speed * 1.1) + (self.resistance * 1.3)
+        elif type == "bandit":
+            self.power = (self.life * 1.2) + (self.strength * 1.1) + (self.speed * 1.8) + (self.resistance * 1.1)
+        elif type == "berserker":
+            self.power = (self.life * 1.5) + (self.strength * 2.0) + (self.speed * 1.0) + (self.resistance * 1.2)
+        elif type == "tank":
+            self.power = (self.life * 1.8) + (self.strength * 1.4) + (self.speed * 1.0) + (self.resistance * 1.8)
+        else:
+            self.power = (self.life) + (self.strength) + (self.speed) + (self.resistance)
     
     @staticmethod
     def name_generator() -> str:
@@ -32,7 +47,7 @@ class Item:
         # Prefixos genericos de itens comuns em jogos RPG 
         prefix = ["Invólucro", "Casca", "Garra", "Perspicacia", "Escudo", "Sabedoria", "Fúria", "Brilho", "Anel", "Essência", "Sabor"]
         #Sufixos baseados em frutas para dar um tom comico e relacionado ao tema
-        suffix = ["Melancia", "Jaca", "Uva", "Maça", "Abacaxi", "Manga", "Banana", "Limão", "Laranja", "Morango", "Pitaia", "Kiwi"]
+        suffix = ["Melancia", "Jaca", "Uva", "Maça", "Abacaxi", "Manga", "Banana", "Limão", "Laranja", "Morango", "Pitaia", "Kiwi", "Mamão", "Pêra"]
         return f"{random.choice(prefix)} de {random.choice(suffix)}"
     
     def __str__(self) -> str:
