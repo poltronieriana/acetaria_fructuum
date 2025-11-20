@@ -28,14 +28,19 @@ class Item:
         """
         Calcula o poder do item com base em seus atributos e a classe escolhida pelo jogador.
         """
+        # Guerreiro foca em força e vida, uma opção equilibrada 
         if type == "warrior":
             self.power = (self.life * 1.5) + (self.strength * 1.75) + (self.speed * 1.1) + (self.resistance * 1.3)
+        # Bandido foca em velocidade e agilidade
         elif type == "bandit":
             self.power = (self.life * 1.2) + (self.strength * 1.1) + (self.speed * 1.8) + (self.resistance * 1.1)
+        # Berserker foca em força bruta
         elif type == "berserker":
             self.power = (self.life * 1.5) + (self.strength * 2.0) + (self.speed * 1.0) + (self.resistance * 1.2)
+        # Tank foca em resistência e vida, uma opção defensiva
         elif type == "tank":
             self.power = (self.life * 1.8) + (self.strength * 1.4) + (self.speed * 1.0) + (self.resistance * 1.8)
+        # Se caso nenhuma classe for escolhida, o poder é calculado sem modificadores
         else:
             self.power = (self.life) + (self.strength) + (self.speed) + (self.resistance)
     
