@@ -16,7 +16,7 @@ def __main__():
     # Input do usuário para definição de classe e cálculo de poder
     choice = input("Escolha a classe do jogador (warrior, bandit, berserker, tank, (vazio)): ").strip().lower()
     
-    # 1. Preparação dos dados: cálculo dos valores (poder) e separação em listas de weights e values
+    # Preparação dos dados: cálculo dos valores (poder) e separação em listas de weights e values
     for item in item_list:
         item.calculate_power(choice)
 
@@ -26,12 +26,12 @@ def __main__():
     print(f"\nItens disponíveis: {len(item_list)}")
     print(f"Capacidade da Mochila: {inventory_capacity}")
 
-    # 2. Execução do algoritmo da Mochila para obter o valor máximo e a tabela DP preenchida
+    # Execução do algoritmo da Mochila para obter o valor máximo e a tabela DP preenchida
     max_val, dp_table = solve_knapsack(inventory_capacity, weights, values)
     
     print(f"Valor Máximo Possível calculado: {max_val:.2f}")
 
-    # 3. Recuperação dos itens selecionados utilizando a função de backtracking na tabela DP
+    # Recuperação dos itens selecionados utilizando a função de backtracking na tabela DP
     selected_items = find_selected_items(dp_table, inventory_capacity, weights, item_list)
 
     # Inicializa a interface para exibição dos resultados
