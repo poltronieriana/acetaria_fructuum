@@ -29,13 +29,14 @@ class Interface:
     def show_multiple_items_details(self, item_list):
         """
         Mostra os detalhes de uma lista de itens através de uma tabela.
-        o argumento final indica se é a build final do jogador, se verdadeiro, mostra o poder acumulado dos itens.
         """
         table_data = []
         for item in item_list:
             table_data.append([item.name, item.life, item.strength, item.speed, item.resistance, item.size, f"{item.power:.2f}"])
         headers = ["Nome", "Vida", "Força", "Velocidade", "Resistência", "Tamanho", "Poder"]
         print(tabulate(table_data, headers=headers, tablefmt="grid"))
+
+        input("\nPressione Enter para continuar...\n")  
     
     def show_final_build(self, item_list):
         """
